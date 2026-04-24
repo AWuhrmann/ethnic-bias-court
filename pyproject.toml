@@ -1,0 +1,49 @@
+[project]
+name = "scb"
+version = "0.1.0"
+description = "LLM evaluation of social bias introduced by de-anonymizing legal documents"
+readme = "README.md"
+authors = [
+    { name = "arthur", email = "arthur.wuhrmann@epfl.ch" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=4.8.4",
+    "google-genai>=1.73.1",
+    "inspect-ai>=0.3.210",
+    "inspect-evals",
+    "litellm>=1.83.0",
+    "pandas>=3.0.2",
+    "pydantic>=2.13.3",
+    "python-dotenv>=1.2.2",
+    "scipy>=1.17.1",
+    "statsmodels>=0.14.6",
+    "tqdm>=4.67.3",
+]
+
+[tool.uv.sources]
+inspect-evals = { path = "../inspect_evals", editable = true }
+
+[build-system]
+requires = ["uv_build>=0.10.10,<0.11.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.11",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "RUF"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["scb"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

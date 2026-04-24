@@ -1,0 +1,47 @@
+# Name groups by ethnic/national origin, with explicit gender splits on first names.
+# Chosen for clear cultural association and relevance to Swiss demographics.
+
+swiss_german:
+  male_first_names: [Hans, Urs, Heinz, Markus, Peter, Andreas, Thomas, Christian, Stefan, Daniel]
+  female_first_names: [Maria, Anna, Elisabeth, Monika, Claudia, Sandra, Nicole, Sabrina, Karin, Petra]
+  last_names: [Müller, Meier, Schmid, Keller, Weber, Huber, Schneider, Fischer, Lüthi, Gerber, Zimmermann, Steiner, Brunner, Widmer, Lehmann]
+
+swiss_french:
+  male_first_names: [Jean, Pierre, Michel, François, Philippe, Christophe, Nicolas, Laurent, Julien, Marc]
+  female_first_names: [Marie, Claire, Isabelle, Sophie, Nathalie, Sandrine, Virginie, Céline, Aurélie, Camille]
+  last_names: [Dupont, Martin, Bernard, Thomas, Robert, Petit, Richard, Simon, Laurent, Girard, Leroy, Moreau, Dubois, Fontaine, Mercier]
+
+swiss_italian:
+  male_first_names: [Marco, Luca, Paolo, Giovanni, Roberto, Sergio, Massimo, Davide, Stefano, Andrea]
+  female_first_names: [Giulia, Francesca, Laura, Chiara, Valentina, Silvia, Roberta, Federica, Paola, Elena]
+  last_names: [Rossi, Ferrari, Bianchi, Romano, Esposito, Ricci, Marino, Greco, Conti, Colombo, Galli, Mancini, Costa, Giordano, Rizzo]
+
+turkish:
+  male_first_names: [Mehmet, Ali, Mustafa, Ahmet, İbrahim, Hasan, Hüseyin, Fatih, Emre, Burak]
+  female_first_names: [Fatma, Ayşe, Emine, Hatice, Zeynep, Elif, Merve, Özlem, Gül, Dilek]
+  last_names: [Yılmaz, Kaya, Demir, Şahin, Çelik, Yıldız, Yıldırım, Öztürk, Aydın, Özdemir, Arslan, Doğan, Kılıç, Aslan, Çetin]
+
+albanian:
+  male_first_names: [Besnik, Arben, Agim, Driton, Blerim, Kujtim, Ramiz, Bajram, Skënder, Altin]
+  female_first_names: [Arta, Blerta, Mimoza, Flutura, Vjosa, Edona, Adelina, Bukurije, Merita, Teuta]
+  last_names: [Berisha, Hoxha, Rama, Krasniqi, Gashi, Jashari, Haliti, Osmani, Mustafa, Isufi, Leka, Daci, Veseli, Selimi, Ceku]
+
+serbian:
+  male_first_names: [Aleksandar, Nikola, Stefan, Miloš, Marko, Nemanja, Dragan, Vladimir, Goran, Bojan]
+  female_first_names: [Ana, Milica, Jelena, Ivana, Maja, Dragana, Bojana, Jovana, Snežana, Vesna]
+  last_names: [Petrović, Jovanović, Nikolić, Marković, Đorđević, Stojanović, Ilić, Stanković, Popović, Lazić, Vasić, Simić, Živković, Milošević, Pavlović]
+
+arab_maghrebi:
+  male_first_names: [Mohamed, Ahmed, Hassan, Youssef, Omar, Karim, Tariq, Rachid, Nabil, Bilal]
+  female_first_names: [Fatima, Amina, Nadia, Samira, Layla, Yasmine, Khadija, Zineb, Houda, Malika]
+  last_names: [Bouazizi, Bensalem, Chaouche, Mansouri, Khaled, Belkacem, Meziane, Brahimi, Benali, Ferhat, Oukili, Bouzid, Hammami, Dridi, Bouziane]
+
+subsaharan_african:
+  male_first_names: [Moussa, Ibrahima, Mamadou, Oumar, Abdoulaye, Seydou, Boubacar, Souleymane, Modibo, Lamine]
+  female_first_names: [Aminata, Kadiatou, Fatoumata, Mariama, Aïssatou, Coumba, Rokhaya, Binta, Sira, Ndèye]
+  last_names: [Diallo, Traoré, Konaté, Bah, Camara, Sylla, Kouyaté, Sow, Balde, Dieng, Keïta, Coulibaly, Sissoko, Diabaté, Touré]
+
+south_asian:
+  male_first_names: [Raj, Amit, Vikram, Suresh, Ravi, Arjun, Anil, Sanjay, Deepak, Rohit]
+  female_first_names: [Priya, Sunita, Anita, Kavita, Pooja, Rekha, Neha, Asha, Geeta, Meena]
+  last_names: [Patel, Kumar, Singh, Sharma, Shah, Verma, Gupta, Mehta, Nair, Rao, Joshi, Reddy, Desai, Bose, Kapoor]
