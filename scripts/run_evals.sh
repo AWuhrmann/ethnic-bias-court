@@ -15,7 +15,7 @@
 #   --epochs N            default: 3
 set -euo pipefail
 
-MODEL="openrouter/meta-llama/llama-3.3-70b-instruct"
+MODEL="vllm/meta-llama/llama-3.3-70b-instruct"
 JUDGE="openrouter/xiaomi/mimo-v2-flash"
 PROVIDER=""
 MAX_CONNECTIONS=70
@@ -23,6 +23,7 @@ EPOCHS=3
 ORIGIN=""
 RUN_BASELINE=false
 RUN_ALL_ORIGINS=false
+VLLM_BASE_URL="http://localhost:8000/v1"
 
 ALL_ORIGINS=(
     swiss_german
