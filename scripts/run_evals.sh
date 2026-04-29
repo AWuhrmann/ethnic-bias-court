@@ -13,6 +13,7 @@
 #   --provider <name>     e.g. "Fireworks"
 #   --max-connections N   default: 70
 #   --epochs N            default: 3
+#   --names-file path     custom names yaml (default: data/names/groups.yaml)
 set -euo pipefail
 
 MODEL="vllm/meta-llama/llama-3.3-70b-instruct"
@@ -21,6 +22,7 @@ PROVIDER=""
 MAX_CONNECTIONS=70
 EPOCHS=3
 ORIGIN=""
+NAMES_FILE=""
 RUN_BASELINE=false
 RUN_ALL_ORIGINS=false
 VLLM_BASE_URL="http://localhost:8000/v1"
@@ -47,7 +49,9 @@ while [[ $# -gt 0 ]]; do
         --judge)      JUDGE="$2"; shift ;;
         --provider)   PROVIDER="$2"; shift ;;
         --max-connections) MAX_CONNECTIONS="$2"; shift ;;
-        --epochs)     EPOCHS="$2"; shift ;;
+        --epochs)      EPOCHS="$2"; shift ;;
+        --names-file)     NAMES_FILE="$2"; shift ;;
+        --vllm-base-url)  VLLM_BASE_URL="$2"; shift ;;
         *) echo "Unknown flag: $1"; exit 1 ;;
     esac
     shift
@@ -67,6 +71,8 @@ fi
 
 PROVIDER_FLAG=""
 [[ -n "$PROVIDER" ]] && PROVIDER_FLAG="-T model_provider=$PROVIDER"
+NAMES_FILE_FLAG=""
+[[ -n "$NAMES_FILE" ]] && NAMES_FILE_FLAG="-T names_file=$NAMES_FILE"
 
 # --- baseline ---
 if [[ "$RUN_BASELINE" == true ]]; then
@@ -74,6 +80,7 @@ if [[ "$RUN_BASELINE" == true ]]; then
     inspect eval ../inspect_evals/src/inspect_evals/tf_bench/tf_bench.py@tf_bench \
         --model "$MODEL" \
         --max-connections "$MAX_CONNECTIONS" \
+        ${VLLM_BASE_URL:+--model-base-url "$VLLM_BASE_URL"} \
         -T scorer_method=llm \
         -T judge_llm="$JUDGE" \
         -T epochs="$EPOCHS" \
@@ -88,9 +95,11 @@ for ORIG in "${ORIGINS_TO_RUN[@]}"; do
     inspect eval src/scb/tasks/bias_eval.py@bias_tf_bench \
         --model "$MODEL" \
         --max-connections "$MAX_CONNECTIONS" \
+        ${VLLM_BASE_URL:+--model-base-url "$VLLM_BASE_URL"} \
         -T name_origin="$ORIG" \
         -T judge_llm="$JUDGE" \
         -T epochs="$EPOCHS" \
         ${PROVIDER_FLAG:+$PROVIDER_FLAG} \
+        ${NAMES_FILE_FLAG:+$NAMES_FILE_FLAG} \
         --log-dir "logs/bias_${ORIG}"
 done

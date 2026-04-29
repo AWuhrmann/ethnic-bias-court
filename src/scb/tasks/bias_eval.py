@@ -169,9 +169,10 @@ def bias_tf_bench(
     epochs: int = 1,
     seed: int = DEFAULT_SEED,
     model_provider: str | None = None,
+    names_file: str | None = None,
 ) -> Task:
     gender_cache = _load_gender_cache()
-    name_groups = load_name_groups()
+    name_groups = load_name_groups() if names_file is None else load_name_groups(Path(names_file))
 
     if name_origin not in name_groups:
         raise ValueError(f"Unknown origin {name_origin!r}. Available: {list(name_groups)}")
