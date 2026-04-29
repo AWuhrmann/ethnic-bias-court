@@ -8,11 +8,14 @@ from __future__ import annotations
 
 import json
 import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
+from threading import Lock
 from typing import Literal
 
 import litellm
 from pydantic import BaseModel
+from tqdm import tqdm
 
 # Swiss BGer anonymization: A.________, A.A.________, B.X.________ etc.
 PLACEHOLDER_RE = re.compile(r"\b([A-Z](?:\.[A-Z])*)\._+")
@@ -107,7 +110,23 @@ def detect_genders(
     )
 
     raw = json.loads(response.choices[0].message.content)
-    entries = [PlaceholderGender(**p) for p in raw.get("placeholders", [])]
+    # LLM sometimes echoes full form "C.________" instead of short "C." — normalize.
+    # LLM may also return duplicate entries for the same placeholder — keep the best
+    # (high confidence beats low; known gender beats unknown).
+    best: dict[str, PlaceholderGender] = {}
+    for p in raw.get("placeholders", []):
+        p["placeholder"] = p["placeholder"].rstrip("_")
+        entry = PlaceholderGender(**p)
+        key = entry.placeholder
+        prev = best.get(key)
+        if prev is None:
+            best[key] = entry
+            continue
+        prev_score = (prev.confidence == "high", prev.gender != "unknown")
+        curr_score = (entry.confidence == "high", entry.gender != "unknown")
+        if curr_score > prev_score:
+            best[key] = entry
+    entries = list(best.values())
     # Ensure every detected placeholder has an entry; fill unknown for any missed
     returned = {e.placeholder for e in entries}
     for ph in placeholders:
@@ -125,10 +144,12 @@ def batch_detect(
     *,
     model: str = "openrouter/openai/gpt-4o-mini",
     cache_path: Path | None = None,
+    max_workers: int = 8,
 ) -> list[GenderAnalysis]:
     """Run gender detection on a list of {'id': ..., 'text': ...} dicts.
 
     Results are cached to cache_path as JSONL so reruns are free.
+    Uncached docs are processed in parallel with up to max_workers threads.
     """
     cache: dict[str, GenderAnalysis] = {}
     if cache_path and cache_path.exists():
@@ -136,16 +157,24 @@ def batch_detect(
             ga = GenderAnalysis.model_validate_json(line)
             cache[ga.doc_id] = ga
 
-    results: list[GenderAnalysis] = []
-    for rec in records:
-        doc_id = str(rec["id"])
-        if doc_id in cache:
-            results.append(cache[doc_id])
-            continue
-        ga = detect_genders(doc_id, rec["text"], model=model)
-        results.append(ga)
-        if cache_path:
-            with cache_path.open("a") as f:
-                f.write(ga.model_dump_json() + "\n")
+    todo = [rec for rec in records if str(rec["id"]) not in cache]
+    results_map: dict[str, GenderAnalysis] = dict(cache)
+    write_lock = Lock()
 
-    return results
+    def _process(rec: dict) -> GenderAnalysis:
+        ga = detect_genders(str(rec["id"]), rec["text"], model=model)
+        if cache_path:
+            with write_lock:
+                with cache_path.open("a") as f:
+                    f.write(ga.model_dump_json() + "\n")
+        return ga
+
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        futures = {pool.submit(_process, rec): rec for rec in todo}
+        with tqdm(total=len(todo), desc="gender detection", unit="doc") as bar:
+            for fut in as_completed(futures):
+                ga = fut.result()
+                results_map[ga.doc_id] = ga
+                bar.update()
+
+    return [results_map[str(rec["id"])] for rec in records]

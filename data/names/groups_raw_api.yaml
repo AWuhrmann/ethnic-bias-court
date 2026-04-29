@@ -1,0 +1,48 @@
+# Names sourced verbatim from names_dataset API (get_top_names), no modifications.
+# Alpha-2 codes: CH swiss_german, FR swiss_french, IT swiss_italian, TR turkish,
+#                AL albanian, RS serbian, MA arab_maghrebi, BF subsaharan_african, IN south_asian
+
+swiss_german:
+  male_first_names: [Thomas, Stefan, Markus, Andreas, Pascal, Marc, Bruno, Marcel, Luca, Roger]
+  female_first_names: [Monika, Manuela, Karin, Christine, Nathalie, Brigitte, Corinne, Fabienne, Melanie, Nadine]
+  last_names: [Müller, Meier, Schmid, Ferreira, Pereira, Keller, Schneider, Weber, Meyer, Rodrigues, Costa, Steiner, Oliveira, Huber, Fernandes]
+
+swiss_french:
+  male_first_names: [Nicolas, David, Julien, Philippe, Christophe, Thomas, Pierre, Laurent, Michel, Alexandre]
+  female_first_names: [Marie, Nathalie, Sylvie, Isabelle, Sophie, Sandrine, Dominique, Julie, Christine, Catherine]
+  last_names: [Martin, Bernard, Dubois, Thomas, Garcia, Petit, Ben, Dupont, Durand, Michel, David, Richard, Laurent, Diallo, Robert]
+
+swiss_italian:
+  male_first_names: [Giuseppe, Francesco, Marco, Andrea, Antonio, Alessandro, Luca, Giovanni, Roberto, Stefano]
+  female_first_names: [Maria, Anna, Francesca, Sara, Laura, Antonella, Elena, Angela, Giulia, Daniela]
+  last_names: [Rossi, Russo, Esposito, Romano, Ferrari, Marino, Bruno, Bianchi, Greco, Giordano, Singh, De Luca, Gallo, Rizzo, Ricci]
+
+turkish:
+  male_first_names: [Mehmet, Mustafa, Ahmet, Ali, Murat, Hasan, Hüseyin, Yusuf, Ramazan, Ömer]
+  female_first_names: [Fatma, Ayşe, Emine, Hatice, Zeynep, Elif, Merve, Esra, Yasemin, Özlem]
+  last_names: [Yılmaz, Kaya, Demir, Can, Yıldız, Çelik, Şahin, Öztürk, Aydın, Yıldırım, Arslan, Özdemir, Aslan, Kara, Doğan]
+
+albanian:
+  male_first_names: [Ilir, Arben, Andi, Altin, Gezim, Klajdi, Ervin, Agim, Fatmir, Ardit]
+  female_first_names: [Eri, Kristi, Miri, Ina, Ani, Alma, Anila, Ela, Mimoza, Flori]
+  last_names: [Hoxha, Shehu, Marku, Cela, Kola, Dervishi, Muca, Kurti, Gjoka, Lleshi, Sula, Hysa, Gjoni, Balla, Elezi]
+
+serbian:
+  male_first_names: [Nikola, Marko, Aleksandar, Dragan, Milan, Zoran, Milos, Dejan, Goran, Nenad]
+  female_first_names: [Jelena, Marija, Milica, Ivana, Jovana, Dragana, Aleksandra, Maja, Sanja, Vesna]
+  last_names: [Jovanovic, Petrovic, Markovic, Nikolic, Popovic, Stojanovic, Ilic, Ivanovic, Djordjevic, Jankovic, Pavlovic, Stankovic, Milosevic, Kovacevic, Savic]
+
+arab_maghrebi:
+  male_first_names: [Mohamed, Simo, Said, Rachid, Hassan, Youssef, Ahmed, Abdo, Ayoub, Hamza]
+  female_first_names: [Fati, Fatima, Khadija, Sara, Salma, Amina, Imane, Malak, Hajar, Amal]
+  last_names: [El, Rajawi, Mohamed, Simo, Ben, Abdo, Fati, Said, Rachid, Alaoui, Amine, Hassan, Ahmed, Kech, Youssef]
+
+subsaharan_african:
+  male_first_names: [Ouedraogo, Boureima, Issouf, Yacouba, Alassane, Inoussa, Issaka, Sayouba, Sawadogo, Oumarou]
+  female_first_names: [Fatimata, Djeneba, Salimata, Salamata, Rasmata, Assetou, Sanata, Zalissa, Safiatou, Adjara]
+  last_names: [Ouedraogo, Sawadogo, Kabore, Sanou, Ouattara, Zongo, Ilboudo, Savadogo, Ouédraogo, Nikiema, Compaore, Zoungrana, Sankara, Yameogo, Kaboré]
+
+south_asian:
+  male_first_names: [Rahul, Md, Ajay, Sanjay, Sunil, Raj, Rajesh, Deepak, Ravi, Raju]
+  female_first_names: [Pooja, Priya, Priyanka, Neha, Vicky, Jyoti, Riya, Sunita, Manju, Puja]
+  last_names: [Kumar, Singh, Khan, Sharma, Yadav, Patel, Das, Raj, Gupta, Ali, Ansari, Thakur, Roy, Rajput, Kumari]

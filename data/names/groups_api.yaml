@@ -1,0 +1,58 @@
+# Name groups sourced entirely from the names_dataset API (get_top_names).
+# No names were invented or manually added.
+#
+# Alpha-2 sources per group:
+#   swiss_german     — first: CH, last: DE  (CH last names skewed by Portuguese diaspora)
+#   swiss_french     — first+last: FR       (non-French surnames filtered: Garcia, Da Silva, Diallo …)
+#   swiss_italian    — first+last: IT       (Singh filtered)
+#   turkish          — TR
+#   albanian         — AL
+#   serbian          — RS                   (API returns names without diacritics)
+#   arab_maghrebi    — first: MA, last: TN  (MA last names are mostly first-name/particle artifacts)
+#   subsaharan_african — BF (Burkina Faso)  (SN/ML/GN not in database; closest Sahel country)
+#   south_asian      — IN                   (Md abbreviation and Puja/Vicky artifacts filtered)
+
+swiss_german:
+  male_first_names: [Thomas, Stefan, Markus, Andreas, Pascal, Marc, Bruno, Marcel, Luca, Roger]
+  female_first_names: [Monika, Manuela, Karin, Christine, Nathalie, Brigitte, Corinne, Fabienne, Melanie, Nadine]
+  last_names: [Müller, Schmidt, Schneider, Fischer, Meyer, Weber, Schulz, Wagner, Becker, Hoffmann, Richter, Koch, Bauer, Klein, Wolf]
+
+swiss_french:
+  male_first_names: [Nicolas, David, Julien, Philippe, Christophe, Thomas, Pierre, Laurent, Michel, Alexandre]
+  female_first_names: [Marie, Nathalie, Sylvie, Isabelle, Sophie, Sandrine, Dominique, Julie, Christine, Catherine]
+  last_names: [Martin, Bernard, Dubois, Thomas, Petit, Dupont, Durand, Michel, David, Richard, Laurent, Robert, Simon, Leroy, Moreau]
+
+swiss_italian:
+  male_first_names: [Giuseppe, Francesco, Marco, Andrea, Antonio, Alessandro, Luca, Giovanni, Roberto, Stefano]
+  female_first_names: [Maria, Anna, Francesca, Sara, Laura, Antonella, Elena, Angela, Giulia, Daniela]
+  last_names: [Rossi, Russo, Esposito, Romano, Ferrari, Marino, Bruno, Bianchi, Greco, Giordano, De Luca, Gallo, Rizzo, Ricci, Caruso]
+
+turkish:
+  male_first_names: [Mehmet, Mustafa, Ahmet, Ali, Murat, Hasan, Hüseyin, Yusuf, Ramazan, Ömer]
+  female_first_names: [Fatma, Ayşe, Emine, Hatice, Zeynep, Elif, Merve, Esra, Yasemin, Özlem]
+  last_names: [Yılmaz, Kaya, Demir, Can, Yıldız, Çelik, Şahin, Öztürk, Aydın, Yıldırım, Arslan, Özdemir, Aslan, Kara, Doğan]
+
+albanian:
+  male_first_names: [Ilir, Arben, Andi, Altin, Gezim, Klajdi, Ervin, Agim, Fatmir, Ardit]
+  female_first_names: [Eri, Kristi, Miri, Ina, Ani, Alma, Anila, Ela, Mimoza, Flori]
+  last_names: [Hoxha, Shehu, Marku, Cela, Kola, Dervishi, Muca, Kurti, Gjoka, Lleshi, Sula, Hysa, Gjoni, Balla, Elezi]
+
+serbian:
+  male_first_names: [Nikola, Marko, Aleksandar, Dragan, Milan, Zoran, Milos, Dejan, Goran, Nenad]
+  female_first_names: [Jelena, Marija, Milica, Ivana, Jovana, Dragana, Aleksandra, Maja, Sanja, Vesna]
+  last_names: [Jovanovic, Petrovic, Markovic, Nikolic, Popovic, Stojanovic, Ilic, Ivanovic, Djordjevic, Jankovic, Pavlovic, Stankovic, Milosevic, Kovacevic, Savic]
+
+arab_maghrebi:
+  male_first_names: [Mohamed, Said, Rachid, Hassan, Youssef, Ahmed, Ayoub, Hamza, Karim, Hicham]
+  female_first_names: [Fatima, Khadija, Sara, Salma, Amina, Imane, Hajar, Amal, Malak, Raja]
+  last_names: [Hamdi, Ayari, Dridi, Trabelsi, Abidi, Mejri, Hammami, Saidi, Jlassi, Riahi, Gharbi, Amri, Aloui, Arfaoui, Ben Ali]
+
+subsaharan_african:
+  male_first_names: [Ouedraogo, Boureima, Issouf, Yacouba, Alassane, Inoussa, Issaka, Sayouba, Oumarou, Hamidou]
+  female_first_names: [Fatimata, Djeneba, Salimata, Salamata, Rasmata, Assetou, Sanata, Zalissa, Safiatou, Adjara]
+  last_names: [Ouedraogo, Sawadogo, Kabore, Sanou, Ouattara, Zongo, Ilboudo, Savadogo, Nikiema, Compaore, Zoungrana, Sankara, Yameogo]
+
+south_asian:
+  male_first_names: [Rahul, Ajay, Sanjay, Sunil, Raj, Rajesh, Deepak, Ravi, Amit, Vijay]
+  female_first_names: [Pooja, Priya, Priyanka, Neha, Jyoti, Riya, Sunita, Manju, Nisha, Rekha]
+  last_names: [Kumar, Singh, Khan, Sharma, Yadav, Patel, Das, Gupta, Ali, Ansari, Thakur, Roy, Rajput, Kumari, Mehta]
