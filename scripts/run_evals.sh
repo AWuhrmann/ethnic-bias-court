@@ -22,6 +22,7 @@ MAX_CONNECTIONS=70
 EPOCHS=3
 ORIGIN=""
 RUN_BASELINE=false
+RUN_ALL_ORIGINS=false
 
 ALL_ORIGINS=(
     swiss_german
@@ -38,8 +39,9 @@ ALL_ORIGINS=(
 # --- argument parsing ---
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --baseline)   RUN_BASELINE=true ;;
-        --origin)     ORIGIN="$2"; shift ;;
+        --baseline)    RUN_BASELINE=true ;;
+        --all-origins) RUN_ALL_ORIGINS=true ;;
+        --origin)      ORIGIN="$2"; shift ;;
         --model)      MODEL="$2"; shift ;;
         --judge)      JUDGE="$2"; shift ;;
         --provider)   PROVIDER="$2"; shift ;;
@@ -51,8 +53,10 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Default: no explicit flags → run everything
-if [[ "$RUN_BASELINE" == false && -z "$ORIGIN" ]]; then
+if [[ "$RUN_BASELINE" == false && "$RUN_ALL_ORIGINS" == false && -z "$ORIGIN" ]]; then
     RUN_BASELINE=true
+    ORIGINS_TO_RUN=("${ALL_ORIGINS[@]}")
+elif [[ "$RUN_ALL_ORIGINS" == true ]]; then
     ORIGINS_TO_RUN=("${ALL_ORIGINS[@]}")
 elif [[ -n "$ORIGIN" ]]; then
     ORIGINS_TO_RUN=("$ORIGIN")
