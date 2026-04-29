@@ -51,6 +51,17 @@ class FormChange(BaseModel):
 
 
 def load_name_groups(path: Path = _NAMES_PATH) -> dict[str, NameGroup]:
+    path = Path(path)
+    if not path.is_absolute() and not path.exists():
+        # Try resolving relative to the project root (parent of src/)
+        project_root = Path(__file__).parent.parent.parent
+        candidate = project_root / path
+        if candidate.exists():
+            path = candidate
+    if not path.exists():
+        raise FileNotFoundError(
+            f"Name groups file not found: {path} (cwd={Path.cwd()})"
+        )
     raw = yaml.safe_load(path.read_text())
     return {origin: NameGroup(origin=origin, **data) for origin, data in raw.items()}
 
